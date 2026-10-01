@@ -1,0 +1,751 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Para Miyuki ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #070007;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* FUNDO */
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+
+      background:
+        radial-gradient(circle at 15% 20%, #720044 0%, transparent 30%),
+        radial-gradient(circle at 85% 80%, #40005f 0%, transparent 30%),
+        linear-gradient(135deg, #070007, #18000f, #09000e);
+    }
+
+    /* CORAÇÕES FLUTUANTES */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      animation: subir linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes subir {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: .8;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* INÍCIO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      animation: aparecer 1.5s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .small {
+      color: #ff75b7;
+      letter-spacing: 4px;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 11vw, 110px);
+      line-height: .95;
+      margin-bottom: 30px;
+
+      background: linear-gradient(
+        90deg,
+        #ff3e91,
+        #ffc2df,
+        #ff3e91
+      );
+
+      -webkit-background-clip: text;
+      color: transparent;
+
+      animation: brilho 3s infinite;
+    }
+
+    @keyframes brilho {
+      0%, 100% {
+        filter: brightness(1);
+      }
+
+      50% {
+        filter: brightness(1.5);
+      }
+    }
+
+    .hero p {
+      color: #ddd;
+      font-size: 20px;
+      line-height: 1.8;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 16px 32px;
+
+      border-radius: 50px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff277f,
+          #941cff
+        );
+
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+
+      box-shadow:
+        0 0 25px #ff277f66;
+
+      transition: .3s;
+    }
+
+    .button:hover {
+      transform: scale(1.08);
+      box-shadow:
+        0 0 45px #ff277f99;
+    }
+
+    /* SEÇÕES */
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 100px 20px;
+    }
+
+    .title {
+      text-align: center;
+      color: #ff73b5;
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 45px;
+    }
+
+    /* CARTÕES */
+    .card {
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+
+      backdrop-filter: blur(15px);
+
+      border-radius: 25px;
+      padding: 38px;
+
+      box-shadow:
+        0 20px 70px rgba(0,0,0,.45);
+    }
+
+    .card p {
+      color: #eee;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    /* MOTIVOS */
+    .reasons {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+    }
+
+    .reason {
+      padding: 30px;
+      text-align: center;
+
+      background: rgba(255,255,255,.045);
+
+      border:
+        1px solid rgba(255,100,180,.15);
+
+      border-radius: 22px;
+
+      transition: .3s;
+    }
+
+    .reason:hover {
+      transform: translateY(-8px);
+      background: rgba(255,50,150,.1);
+    }
+
+    .emoji {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .reason h3 {
+      color: #ff79b9;
+      margin-bottom: 10px;
+    }
+
+    .reason p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* CONTADOR */
+    .counter {
+      text-align: center;
+
+      padding: 45px;
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,40,130,.12),
+          rgba(120,30,255,.12)
+        );
+    }
+
+    .counter-label {
+      color: #ddd;
+      font-size: 19px;
+    }
+
+    .counter-number {
+      font-size: 65px;
+      font-weight: bold;
+      color: #ff67ad;
+      margin: 20px 0;
+    }
+
+    /* CARTA */
+    .letter {
+      position: relative;
+    }
+
+    .letter::before {
+      content: "❤️";
+
+      position: absolute;
+      top: -25px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 35px;
+    }
+
+    .letter p {
+      text-align: center;
+    }
+
+    .highlight {
+      color: #ff6caf;
+      font-weight: bold;
+    }
+
+    /* FINAL */
+    .final {
+      min-height: 75vh;
+
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+    }
+
+    .big-heart {
+      font-size: 110px;
+      animation: pulsar 1.5s infinite;
+
+      margin-bottom: 30px;
+    }
+
+    @keyframes pulsar {
+      0%,100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    .final h2 {
+      font-size: clamp(45px, 8vw, 75px);
+      color: #ff69af;
+    }
+
+    .final p {
+      color: #ccc;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      color: #777;
+      border-top:
+        1px solid rgba(255,255,255,.08);
+    }
+
+    /* CELULAR */
+    @media(max-width:600px) {
+
+      section {
+        padding: 70px 18px;
+      }
+
+      .card {
+        padding: 25px;
+      }
+
+      .counter-number {
+        font-size: 48px;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- FUNDO -->
+  <div class="background"></div>
+
+  <!-- CORAÇÕES -->
+  <div class="hearts" id="hearts"></div>
+
+
+  <!-- ========================= -->
+  <!-- INÍCIO -->
+  <!-- ========================= -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="small">
+        uma pequena declaração para uma pessoa muito especial
+      </div>
+
+      <h1>
+        Miyuki ❤️
+      </h1>
+
+      <p>
+        Eu poderia escrever milhares de palavras para tentar
+        explicar o que sinto por você...
+        mas ainda assim provavelmente não seria suficiente.
+      </p>
+
+      <a href="#carta" class="button">
+        Tenho uma coisa para te dizer ↓
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- ========================= -->
+  <!-- CARTA -->
+  <!-- ========================= -->
+
+  <section id="carta">
+
+    <h2 class="title">
+      Miyuki, essa é para você...
+    </h2>
+
+    <p class="subtitle">
+      Leia até o final ❤️
+    </p>
+
+    <div class="card letter">
+
+      <p>
+
+        Miyuki, eu queria conseguir colocar em palavras tudo
+        o que eu sinto por você, mas às vezes parece que
+        nenhuma palavra é suficiente.
+
+        <br><br>
+
+        Você se tornou uma pessoa muito especial para mim.
+        Seu jeito, suas mensagens, nossas conversas,
+        nossas brincadeiras e até as pequenas coisas que
+        talvez você nem perceba fazem diferença para mim.
+
+        <br><br>
+
+        Eu gosto de ter você na minha vida.
+        Gosto de poder conversar com você,
+        rir com você e criar momentos que eu vou lembrar.
+
+        <br><br>
+
+        E quanto mais eu conheço você,
+        mais eu percebo o quanto você é especial.
+
+        <br><br>
+
+        <span class="highlight">
+          Miyuki, eu amo você. ❤️
+        </span>
+
+        <br><br>
+
+        E esse site é apenas uma pequena tentativa
+        de mostrar uma coisa que meu coração já sabe faz tempo.
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- MOTIVOS -->
+  <!-- ========================= -->
+
+  <section>
+
+    <h2 class="title">
+      Por que eu amo a Miyuki? ❤️
+    </h2>
+
+    <p class="subtitle">
+      Poderia colocar centenas de motivos aqui...
+    </p>
+
+    <div class="reasons">
+
+      <div class="reason">
+
+        <div class="emoji">❤️</div>
+
+        <h3>Seu jeito</h3>
+
+        <p>
+          Porque existe algo no seu jeito que faz
+          você ser diferente de qualquer outra pessoa.
+        </p>
+
+      </div>
+
+
+      <div class="reason">
+
+        <div class="emoji">😊</div>
+
+        <h3>Seu sorriso</h3>
+
+        <p>
+          Porque seu sorriso tem um jeito de deixar
+          qualquer momento mais especial.
+        </p>
+
+      </div>
+
+
+      <div class="reason">
+
+        <div class="emoji">✨</div>
+
+        <h3>Você</h3>
+
+        <p>
+          Porque eu não amo apenas algumas coisas em você.
+          Eu amo você por ser exatamente quem você é.
+        </p>
+
+      </div>
+
+
+      <div class="reason">
+
+        <div class="emoji">🫶</div>
+
+        <h3>Os nossos momentos</h3>
+
+        <p>
+          Porque cada conversa, cada risada e cada lembrança
+          com você significa muito para mim.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- CONTADOR -->
+  <!-- ========================= -->
+
+  <section>
+
+    <h2 class="title">
+      Uma coisa impossível de medir...
+    </h2>
+
+    <p class="subtitle">
+      Meu amor pela Miyuki ❤️
+    </p>
+
+    <div class="counter">
+
+      <div class="counter-label">
+        Meu amor por você está em:
+      </div>
+
+      <div
+        class="counter-number"
+        id="loveCounter">
+        100%
+      </div>
+
+      <div class="counter-label">
+        ...e continua aumentando.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- DECLARAÇÃO FINAL -->
+  <!-- ========================= -->
+
+  <section>
+
+    <div class="card letter">
+
+      <p>
+
+        Se eu pudesse guardar uma coisa para sempre,
+        provavelmente escolheria todos os momentos
+        que vivi com você.
+
+        <br><br>
+
+        Porque momentos passam,
+        mensagens podem ser apagadas,
+        mas aquilo que uma pessoa faz você sentir
+        fica guardado no coração.
+
+        <br><br>
+
+        E você, Miyuki,
+        deixou uma marca muito especial no meu.
+
+        <br><br>
+
+        <span class="highlight">
+          Eu espero que você nunca esqueça
+          o quanto é importante para mim.
+        </span>
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- FINAL -->
+  <!-- ========================= -->
+
+  <section class="final">
+
+    <div class="big-heart">
+      ❤️
+    </div>
+
+    <h2>
+      Eu te amo, Miyuki.
+    </h2>
+
+    <p>
+      Hoje, amanhã e em todos os momentos
+      que ainda vamos viver.
+    </p>
+
+  </section>
+
+
+  <!-- RODAPÉ -->
+
+  <footer>
+
+    Feito especialmente para Miyuki ❤️
+
+    <br>
+
+    Com todo o meu amor.
+
+  </footer>
+
+
+  <!-- ========================= -->
+  <!-- JAVASCRIPT -->
+  <!-- ========================= -->
+
+  <script>
+
+    /* CORAÇÕES FLUTUANTES */
+
+    const heartsContainer =
+      document.getElementById("hearts");
+
+    const emojis = [
+      "❤️",
+      "💗",
+      "💕",
+      "💖",
+      "💘",
+      "💞"
+    ];
+
+
+    function createHeart() {
+
+      const heart =
+        document.createElement("div");
+
+      heart.classList.add("heart");
+
+      heart.innerHTML =
+        emojis[
+          Math.floor(
+            Math.random() * emojis.length
+          )
+        ];
+
+      heart.style.left =
+        Math.random() * 100 + "%";
+
+      heart.style.fontSize =
+        Math.random() * 20 + 12 + "px";
+
+      heart.style.animationDuration =
+        Math.random() * 7 + 6 + "s";
+
+      heart.style.animationDelay =
+        Math.random() * 2 + "s";
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 14000);
+
+    }
+
+
+    setInterval(
+      createHeart,
+      450
+    );
+
+
+    /* CONTADOR DO AMOR ❤️ */
+
+    let love = 100;
+
+    const counter =
+      document.getElementById(
+        "loveCounter"
+      );
+
+
+    setInterval(() => {
+
+      love +=
+        Math.floor(
+          Math.random() * 3
+        ) + 1;
+
+      counter.innerText =
+        love + "%";
+
+    }, 1800);
+
+  </script>
+
+</body>
+</html>
+```
